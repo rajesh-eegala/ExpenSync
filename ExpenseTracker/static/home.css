@@ -1,0 +1,92 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding and border are included in element's total width and height */
+}
+
+/* HTML and Body Styles */
+html, body {
+    height: 100%; /* Ensure the HTML and body elements take the full height of the viewport */
+    width: 100%; /* Ensure the body takes the full width of the viewport */
+    font-family: Arial, sans-serif; /* Use a clean and readable font */
+    line-height: 1.6; /* Increase line height for better readability */
+    color: #333; /* Dark grey text color for better contrast */
+    background: #f4f4f4; /* Light grey background */
+}
+
+/* Header Styles */
+header {
+    background: #35424a; /* Dark background for header */
+    color: #ffffff; /* White text color */
+    padding: 20px 0; /* Padding for top and bottom */
+}
+
+.container {
+    width: 80%; /* Container width */
+    margin: auto; /* Center the container */
+}
+
+/* Branding Section */
+#branding h1 {
+    margin: 0; /* Remove default margin */
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style: none; /* Remove bullet points */
+}
+
+nav ul li {
+    display: inline; /* Display list items inline */
+    margin-left: 20px; /* Space between navigation items */
+}
+
+nav a {
+    color: #ffffff; /* White text color for links */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Showcase Section */
+#showcase {
+    background: #e8491d; /* Bright color for showcase section */
+    color: #ffffff; /* White text color */
+    padding: 80px 0; /* Padding for top and bottom */
+    text-align: center; /* Center text */
+    min-height: calc(100vh - 120px); /* Make it at least full height minus header and footer */
+}
+
+/* Footer Styles */
+footer {
+    text-align: center; /* Center footer text */
+    padding: 10px 0; /* Padding for top and bottom */
+    background: #35424a; /* Same background as header */
+    color: #ffffff; /* White text color */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    nav ul {
+        display: flex; /* Use flexbox for responsive navigation */
+        flex-direction: column; /* Stack items vertically */
+        text-align: center; /* Center items */
+    }
+
+    nav ul li {
+        margin: 10px 0; /* Space between items in vertical layout */
+    }
+
+    #showcase {
+        padding: 50px 20px; /* More padding for smaller devices */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%; /* Increase container width on small devices */
+    }
+
+    nav ul li {
+        margin: 5px 0; /* Smaller margin for very small devices */
+    }
+}

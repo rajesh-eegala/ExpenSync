@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'test.css' %}">
+</head>
+<body>
+   
+    <div class="container">
+        <section id="main">
+            
+            
+            <h1>Register</h1>
+            <form action="{% url 'register' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="first_name">First name</label>
+                    <input type="text" id="first_name" name="first_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="last_name">last name</label>
+                    <input type="text" id="last_name" name="last_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="username">username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password1">Password</label>
+                    <input type="password" id="password1" name="password1" required>
+                </div>
+                <div class="form-group">
+                    <label for="password1">Confirm password</label>
+                    <input type="password" id="password2" name="password2" required>
+                </div>
+               
+                
+                
+                
+
+                <button type="submit" class="btn">Register</button>
+            </form>
+            <!-- Messages -->
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+    
+    </div>
+    <footer>
+        <p>Expense Tracker &copy; 2024</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Expense</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'test.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Expense</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save Changes</button>
+        </form>
+        <a href="{% url 'expense_list' %}">Back to Expense List</a>
+    </div>
+    <footer>
+        <p>Expense Tracker &copy; 2024</p>
+    </footer>
+</body>
+</html>

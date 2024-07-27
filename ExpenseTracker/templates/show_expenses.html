@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Summary</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'summary.css' %}">
+</head>
+<body>
+    <div class="container">
+        <section id="main">
+            <h1>Expense Summary</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for expense in expenses %}
+                    <tr>
+                        <td>{{ expense.expense_title }}</td>
+                        <td>{{ expense.expense_type }}</td>
+                        <td>{{ expense.date }}</td>
+                        <td>Rs:{{ expense.amount }}</td>
+                        <td>
+                            <a href="{% url 'edit_expense' expense.id %}">Edit</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5">No expenses available.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <footer>
+        <p>Expense Tracker &copy; 2024</p>
+    </footer>
+</body>
+</html>

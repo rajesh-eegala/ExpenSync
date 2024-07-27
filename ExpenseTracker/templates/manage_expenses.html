@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Expenses</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'test.css' %}">
+</head>
+<body>
+    <!-- Create a New Product Section -->
+    <section id="create-product">
+        <h1>Create a New Product</h1>
+        <form action="{% url 'manage_expenses' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Create</button>
+        </form>
+    </section>
+
+    
+    <!-- Navigation Button -->
+    <button><a href="{% url 'expense_list' %}">Go to Expense List</a></button>
+    
+
+    <!-- Footer Section -->
+    <footer>
+        <p>Expense Tracker &copy; 2024</p>
+    </footer>
+</body>
+</html>

@@ -53,6 +53,7 @@ The application features a clean and intuitive user interface, making it easy fo
    - Configure the database settings in the Django settings.py file.
    - Run migrations:
      ```bash
+     
    python manage.py migrate
 
 5. Create a superuser to access the admin panel:

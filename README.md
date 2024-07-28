@@ -52,6 +52,7 @@ The application features a clean and intuitive user interface, making it easy fo
    - Install MySQL and create a database for the project.
    - Configure the database settings in the Django settings.py file.
    - Run migrations:
+     
    ```bash  
    python manage.py migrate
 

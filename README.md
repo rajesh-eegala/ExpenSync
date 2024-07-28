@@ -1,8 +1,8 @@
-# Expense Tracker
+# ExpenSync
 
 ## Overview
 
-The Expense Tracker is a web application designed to help users manage and track their expenses efficiently. With features like adding, updating, deleting, and viewing expenses, the application offers a comprehensive solution for personal financial management. It also includes user authentication, allowing each user to maintain a personalized account for their expenses.
+The ExpenSync is a web application designed to help users manage and track their expenses efficiently. With features like adding, updating, deleting, and viewing expenses, the application offers a comprehensive solution for personal financial management. It also includes user authentication, allowing each user to maintain a personalized account for their expenses.
 
 ## About
 

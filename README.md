@@ -66,5 +66,7 @@ The application features a clean and intuitive user interface, making it easy fo
 
 7. Access the application at http://127.0.0.1:8000/.
 
+## Contribution
 
+Contributions are welcome! If you have ideas to improve the application or encounter any issues, please submit a pull request or open an issue on the GitHub repository.
    

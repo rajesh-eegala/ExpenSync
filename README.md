@@ -39,3 +39,31 @@ The application features a clean and intuitive user interface, making it easy fo
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/expense-tracker.git
+
+2. Navigate to the project directory
+    ```bash
+   cd expense-tracker
+    
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   
+4. Set up the database:
+   - Install MySQL and create a database for the project.
+   - Configure the database settings in the Django settings.py file.
+   - Run migrations:
+     ```bash
+   python manage.py migrate
+
+5. Create a superuser to access the admin panel:
+    ```bash
+   python manage.py createsuperuser
+
+6. Start the server:
+     ```bash
+   python manage.py runserver
+
+7. Access the application at http://127.0.0.1:8000/.
+
+
+   

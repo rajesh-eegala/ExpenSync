@@ -38,11 +38,11 @@ The application features a clean and intuitive user interface, making it easy fo
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/expense-tracker.git
+   git clone https://github.com/yourusername/ExpenSync.git
 
 2. Navigate to the project directory
     ```bash
-   cd expense-tracker
+   cd ExpenSync
     
 3. Install dependencies:
    ```bash

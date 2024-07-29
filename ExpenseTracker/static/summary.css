@@ -40,7 +40,7 @@ h2 {
     flex: 1; /* Allow charts to grow and shrink equally */
     min-width: 300px; /* Ensure charts don't get too small */
     max-width: calc(50% - 10px); /* Ensure charts do not exceed half the container width with gap considered */
-    background-color: #f4f4f4;
+    background-color: #f1ebeb;
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);

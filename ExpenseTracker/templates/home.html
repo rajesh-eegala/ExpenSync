@@ -11,27 +11,44 @@
     <header>
         <div class="container">
             <div id="branding">
-                <h1>Expense Tracker</h1>
+                <h1>ExpenSync</h1>
+                
             </div>
             <nav>
                 <ul>
+                    
                     <li class="current"><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'register' %}">Registration</a></li>
-                    <li><a href="{% url 'login' %}">Login</a></li>
                     <li><a href="{% url 'manage_expenses' %}">Manage Expenses</a></li>
-                    
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'summary' %}">Summary</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <section id="showcase">
-        <div class="container">
-            <h1>Welcome to Expense Tracker</h1>
-            <p>Manage and track your expenses efficiently.</p>
+
+    <div class="container">
+        <div class="content">
+            <div class="description">
+                <h1>Welcome to ExpenSync!</h1>
+                <p>- Manage and track your expenses efficiently</p>
+            </div>
+            <div class="text-field">
+                <p>In today's fast-paced world, keeping track of personal expenses can be challenging. ExpenSync aims to simplify this process by providing an easy-to-use platform where users can log and monitor their spending. Whether you're budgeting for groceries, planning a trip, or keeping an eye on entertainment expenses, this application offers the tools you need to stay on top of your finances.</p>
+            </div>
+            <div class="images">
+                <img src="{% static 'ex.png' %}" alt="Image 1">
+                <img src="{% static 'tracker.png' %}" alt="Image 2">
+            </div>
         </div>
-    </section>
+    </div>
+
     <footer>
-        <p>Expense Tracker &copy; 2024</p>
+        <p>ExpenSync &copy; 2024</p>
     </footer>
 </body>
 </html>

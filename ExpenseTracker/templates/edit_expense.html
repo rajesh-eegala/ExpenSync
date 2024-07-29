@@ -13,10 +13,16 @@
         <form action="" method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Save Changes</button>
+            <br>
+           
+            <button type="submit" class="button">Save Changes</button>
         </form>
-        <a href="{% url 'expense_list' %}">Back to Expense List</a>
+        <br>
+        <a href="{% url 'expense_list' %}">
+            <button class="button">Go to Expense List</button></a>
     </div>
+    
+
     <footer>
         <p>Expense Tracker &copy; 2024</p>
     </footer>

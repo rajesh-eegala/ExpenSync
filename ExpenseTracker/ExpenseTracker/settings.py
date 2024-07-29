@@ -28,6 +28,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# URL to redirect users to if they are not logged in
+LOGIN_URL = '/login/'  
+LOGOUT_REDIRECT_URL = '/login/'  # Redirect to login page after logout
+
+
+
 
 # Application definition
 
@@ -81,9 +87,9 @@ WSGI_APPLICATION = 'ExpenseTracker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'expensetracker',
+        'NAME': 'Expense_tracker',
         'USER': 'root',
-        'PASSWORD': 'rajeshcentos123',
+        'PASSWORD': 'Rajeshcentos@12',
         'HOST': 'localhost',  # or the hostname where your MySQL server is running
         'PORT': '3306',      # or the port on which your MySQL server is listening
     }

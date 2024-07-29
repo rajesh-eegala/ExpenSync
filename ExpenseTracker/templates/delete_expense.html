@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Delete</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'test.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Confirm Delete</h1>
+        <p>Are you sure you want to delete the expense "{{ expense.title }}"?</p>
+        <form action="" method="post">
+            {% csrf_token %}
+            <br>
+            <button type="submit" class="button">Yes, delete</button>
+            <br>
+            <a href="{% url 'delete_expense' expense.id %}" class="button">No, go back</a>
+        </form>
+    </div>
+</body>
+</html>

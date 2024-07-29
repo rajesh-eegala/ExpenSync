@@ -6,23 +6,37 @@
     <title>Login</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'test.css' %}">
+    <style>
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+        }
+        .valid {
+            border-color: green;
+        }
+        .invalid {
+            border-color: red;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <section id="main">
             <h1>Login</h1>
-            <form method="post">
+            <form id="loginForm" method="post">
                 {% csrf_token %}
                 
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" required>
+                    <span class="error-message" id="usernameError"></span>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
+                    <span class="error-message" id="passwordError"></span>
                 </div>
-                <button type="submit" class="btn">Login</button>
+                <button type="submit" class="button">Login</button>
             </form>
         </section>
         {% if messages %}
@@ -35,11 +49,45 @@
             </div>
         {% endif %}
     </div>
-
-    
-
     <footer>
         <p>Expense Tracker &copy; 2024</p>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('loginForm');
+            const username = document.getElementById('username');
+            const password = document.getElementById('password');
+
+            const usernameError = document.getElementById('usernameError');
+            const passwordError = document.getElementById('passwordError');
+
+            function validateInput(inputElement, errorElement, validationFunction, errorMessage) {
+                if (validationFunction(inputElement.value)) {
+                    errorElement.textContent = '';
+                    inputElement.classList.add('valid');
+                    inputElement.classList.remove('invalid');
+                } else {
+                    errorElement.textContent = errorMessage;
+                    inputElement.classList.add('invalid');
+                    inputElement.classList.remove('valid');
+                }
+            }
+
+            username.addEventListener('input', () => {
+                validateInput(username, usernameError, value => value.trim() !== '', 'Username is required.');
+            });
+
+            password.addEventListener('input', () => {
+                validateInput(password, passwordError, value => value.length >= 6, 'Password must be at least 6 characters long.');
+            });
+
+            form.addEventListener('submit', (e) => {
+                if (username.classList.contains('invalid') || password.classList.contains('invalid')) {
+                    e.preventDefault();
+                    alert('Please fix the errors in the form.');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

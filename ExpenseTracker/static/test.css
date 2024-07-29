@@ -1,11 +1,16 @@
 /* styles_login_register.css */
 
 /* Reset default browser styling */
-body, h1, p {
+body,p {
     margin: 0;
     padding: 0;
+   
 }
-
+h1{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -15,7 +20,7 @@ body {
 
 /* Container styling */
 .container {
-    max-width: 600px;
+    max-width: 450px;
     margin: 0 auto;
     background-color: #fff;
     padding: 20px;
@@ -63,29 +68,29 @@ input[type="password"] {
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
-    border-color: #007bff;
+    border-color: #000000;
     outline: none;
 }
 
 /* Button styling */
 .button {
-    display: inline-block;
-    padding: 10px 20px;
+    display: inline-block; /* Make the hyperlink behave like a block element */
+    padding: 10px 10px; /* Adjust padding as needed for button size */
     font-size: 16px;
-    color: rgb(166, 14, 14);
-    background-color: #007BFF;
-    border: none;
-    border-radius: 5px;
+    color: #ffffff !important; /* White text color */
+    background-color: #998181 !important; /* Background color */
+    border: none !important; /* Remove border */
+    border-radius: 3px; /* Optional: Rounded corners */
     text-align: center;
-    text-decoration: none; /* Remove underline from links styled as buttons */
+    text-decoration: none !important; /* Remove underline */
     cursor: pointer;
     transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
+/* Optional: Add a hover effect for better user experience */
 .button:hover {
-    background-color: #0056b3; /* Darker blue for hover effect */
+    background-color: #333333; /* Slightly lighter black on hover */
 }
-
 
 /* Alert message styling */
 .messages {

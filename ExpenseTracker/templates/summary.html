@@ -9,6 +9,23 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <header>
+    <div class="container1">
+    <nav>
+    <ul>
+        <li class="current"><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'register' %}">Registration</a></li>
+        <li><a href="{% url 'manage_expenses' %}">Manage Expenses</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+        {% endif %}
+        <li><a href="{% url 'summary' %}">Summary</a></li>
+    </ul>
+</nav>
+</div>
+</header>
     <div class="container">
         <h1>Expense Summary</h1>
         <div>

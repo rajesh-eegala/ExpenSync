@@ -7,12 +7,13 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1200px; /* Adjust as needed */
     margin: 0 auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Hide overflow if content is too big */
 }
 
 h1 {
@@ -31,12 +32,14 @@ h2 {
     flex-wrap: wrap; /* Allow wrapping for smaller screens */
     justify-content: space-between; /* Ensure space between charts */
     gap: 20px; /* Add space between charts */
+    align-items: flex-start; /* Align items to the top */
 }
 
-.chart {
+.bar-chart,
+.pie-chart {
     flex: 1; /* Allow charts to grow and shrink equally */
-    min-width: 45%; /* Ensure charts don't get too small */
-    height: 400px; /* Set a fixed height for consistency */
+    min-width: 300px; /* Ensure charts don't get too small */
+    max-width: calc(50% - 10px); /* Ensure charts do not exceed half the container width with gap considered */
     background-color: #f4f4f4;
     padding: 10px;
     border-radius: 8px;
@@ -45,9 +48,11 @@ h2 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden; /* Hide any overflow from child elements */
 }
 
 canvas {
-    max-width: 100%; /* Ensure canvas resizes with the chart div */
-    height: auto; /* Maintain aspect ratio */
+    width: 100% !important; /* Ensure canvas fits container width */
+    height: 450px !important; /* Set a fixed height for consistency across charts */
+    max-height: 400px; /* Set a maximum height */
 }

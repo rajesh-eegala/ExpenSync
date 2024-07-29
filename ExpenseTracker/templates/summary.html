@@ -14,14 +14,15 @@
         <div>
             <h2>Total Expenses</h2>
             <p>Number of Expenses: {{ total_expenses.total_count }}</p>
-            <p>Total Amount Spent: Rs. {{ total_expenses.total_amount }}</p>
+            <p>Total Amount Spent: <br>Rs:{{ total_expenses.total_amount }}</p>
         </div>
+        <br>
         <div class="chart-container">
-            <div class="chart">
+            <div class="pie-chart">
                 <h2>Expenses by Category</h2>
                 <canvas id="categoryChart"></canvas>
             </div>
-            <div class="chart">
+            <div class="bar-chart">
                 <h2>Expenses Count by Category</h2>
                 <canvas id="countChart"></canvas>
             </div>
@@ -30,40 +31,30 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var categoryLabels = [];
-            var categoryAmounts = [];
-            var categoryCounts = [];
+            var allData = {
+                labels: [],
+                amounts: [],
+                counts: []
+            };
 
+            // Populate data from Django context
             {% for category in expenses_by_category %}
-            categoryLabels.push("{{ category.expense_type }}");
-            categoryAmounts.push({{ category.category_amount }});
-            categoryCounts.push({{ category.category_count }});
+                allData.labels.push("{{ category.expense_type|escapejs }}");
+                allData.amounts.push({{ category.category_amount }});
+                allData.counts.push({{ category.category_count }});
             {% endfor %}
 
+            // Initialize charts
             var ctxCategory = document.getElementById('categoryChart').getContext('2d');
             var categoryChart = new Chart(ctxCategory, {
                 type: 'pie',
                 data: {
-                    labels: categoryLabels,
+                    labels: allData.labels,
                     datasets: [{
                         label: 'Amount Spent',
-                        data: categoryAmounts,
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
+                        data: allData.amounts,
+                        backgroundColor: generateColors(allData.labels.length),
+                        borderColor: generateColors(allData.labels.length),
                         borderWidth: 1
                     }]
                 },
@@ -95,24 +86,73 @@
             var countChart = new Chart(ctxCount, {
                 type: 'bar',
                 data: {
-                    labels: categoryLabels,
+                    labels: allData.labels,
                     datasets: [{
                         label: 'Number of Expenses',
-                        data: categoryCounts,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
+                        data: allData.counts,
+                        backgroundColor: generateColors(allData.labels.length),
+                        borderColor: generateColors(allData.labels.length),
                         borderWidth: 1
                     }]
                 },
                 options: {
                     responsive: true,
                     scales: {
+                        x: {
+                            beginAtZero: true,
+                            ticks: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        },
                         y: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            ticks: {
+                                font: {
+                                    size: 14
+                                },
+                                callback: function(value) {
+                                    return Number.isInteger(value) ? value : '';
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    var label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += Math.round(context.parsed.y);
+                                    }
+                                    return label;
+                                }
+                            }
                         }
                     }
                 }
             });
+
+            function generateColors(num) {
+                const colors = [];
+                const baseColors = [
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(255, 159, 64, 0.6)'
+                ];
+
+                for (let i = 0; i < num; i++) {
+                    colors.push(baseColors[i % baseColors.length]);
+                }
+                return colors;
+            }
         });
     </script>
 </body>

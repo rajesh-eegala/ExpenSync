@@ -75,7 +75,8 @@ def manage_expenses(request):
         if form.is_valid():
             expense = form.save(commit=False)  # Create an instance but don't save it yet
             expense.user = request.user        # Set the user to the currently logged-in user
-            expense.save()                     # Now save the instance
+            expense.save()   
+            messages.success(request, 'Expense added successfully')                  # Now save the instance
             return redirect('manage_expenses') # Redirect to a URL name, not a template
 
     else:

@@ -5,6 +5,15 @@
     <title>Manage Expenses</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'add_expenses.css' %}">
+    <script>
+        // Function to set the max attribute of date input to today's date
+        function setMaxDate() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('date').setAttribute('max', today);
+        }
+        // Call the function when the page loads
+        window.onload = setMaxDate;
+    </script>
 </head>
 <body>
     <!-- Header and Navigation Bar -->
@@ -13,8 +22,8 @@
             <nav>
                 <ul>
                     <li class="current"><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'register' %}">Registration</a></li>
-                    <li><a href="{% url 'manage_expenses' %}">Manage Expenses</a></li>
+                    <li><a href="{% url 'expense_list' %}">Manage Expenses</a></li>
+                   
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'logout' %}">Logout</a></li>
                     {% else %}
@@ -43,13 +52,14 @@
                         <option value="Food">Food</option>
                         <option value="Transport">Transport</option>
                         <option value="Entertainment">Entertainment</option>
+                        <option value="Shopping">Shopping</option>
                         <option value="Utilities">Utilities</option>
                         <option value="Others">Others</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="amount">Amount</label>
-                    <input type="number" id="amount" name="amount" required>
+                    <input type="number" id="amount" name="amount" min="1" step="1" required>
                 </div>
                 <div class="form-group">
                     <label for="date">Date</label>

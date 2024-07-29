@@ -72,13 +72,33 @@
                     inputElement.classList.remove('valid');
                 }
             }
+            function validateInput(inputElement, errorElement, validateFn, errorMessage) {
+                if (validateFn(inputElement.value)) {
+                    errorElement.textContent = ''; // Clear error message if valid
+                    inputElement.classList.remove('invalid'); // Remove invalid class if valid
+                } else {
+                    errorElement.textContent = errorMessage; // Show error message if invalid
+                    inputElement.classList.add('invalid'); // Add invalid class for styling
+                }
+            }
+            
+            // Function to check the password against multiple criteria
+            function validatePassword(password) {
+                const minLength = 6;
+                const hasUpperCase = /[A-Z]/.test(password);
+                const hasNumber = /[0-9]/.test(password);
+                const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+                return password.length >= minLength && hasUpperCase && hasNumber && hasSpecialChar;
+            }
 
             username.addEventListener('input', () => {
                 validateInput(username, usernameError, value => value.trim() !== '', 'Username is required.');
             });
 
+            // Add event listener to password input field
             password.addEventListener('input', () => {
-                validateInput(password, passwordError, value => value.length >= 6, 'Password must be at least 6 characters long.');
+                validateInput(password, passwordError, value => validatePassword(value), 
+                    'Password must be at least 6 characters long, include at least one uppercase letter, one number, and one special character.');
             });
 
             form.addEventListener('submit', (e) => {

@@ -8,9 +8,27 @@
     <link rel="stylesheet" href="{% static 'show_expenses.css' %}">
 </head>
 <body>
+    <header>
+        <div class="container1">
+        <nav>
+        <ul>
+            <li class="current"><a href="{% url 'home' %}">Home</a></li>
+            
+            <li><a href="{% url 'manage_expenses' %}">Add Expenses</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+            <li><a href="{% url 'summary' %}">Summary</a></li>
+        </ul>
+    </nav>
+    </div>
+    </header>
+    
     <div class="container">
         <section id="main">
-            <h1>Your Expenses</h1>
+            <h1>Manage your Expenses</h1>
             <table>
                 <thead>
                     <tr>

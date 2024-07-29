@@ -14,8 +14,9 @@
     <nav>
     <ul>
         <li class="current"><a href="{% url 'home' %}">Home</a></li>
-        <li><a href="{% url 'register' %}">Registration</a></li>
-        <li><a href="{% url 'manage_expenses' %}">Manage Expenses</a></li>
+       
+        <li><a href="{% url 'manage_expenses' %}">Add Expenses</a></li>
+        <li><a href="{% url 'expense_list' %}">Manage Expenses</a></li>
         {% if user.is_authenticated %}
             <li><a href="{% url 'logout' %}">Logout</a></li>
         {% else %}

@@ -19,8 +19,19 @@
         }
     </style>
 </head>
+
 <body>
+    
     <div class="container">
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
         <section id="main">
             <h1>Register</h1>
             <form id="registrationForm" action="{% url 'register' %}" method="POST">
@@ -40,6 +51,7 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required>
+                    <span class="error-message" id="emailError"></span>
                 </div>
                 <div class="form-group">
                     <label for="password1">Password</label>
@@ -51,19 +63,13 @@
                     <input type="password" id="password2" name="password2" required>
                     <span class="error-message" id="password2Error"></span>
                 </div>
-                <button type="submit" class="button">Submit</button>
+                <button type="submit" class="button">Submit</button><br>
+                
             </form>
-        </section>
-        <!-- Messages -->
-        {% if messages %}
-            <div class="messages">
-                {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
+            <div>
+                <a href="{% url 'home' %}"><button class="button">Back to Home</button></a>
             </div>
-        {% endif %}
+        </section>
     </div>
     <footer>
         <p>Expense Tracker &copy; 2024</p>
@@ -73,8 +79,10 @@
             const form = document.getElementById('registrationForm');
             const password1 = document.getElementById('password1');
             const password2 = document.getElementById('password2');
+            const email = document.getElementById('email');
             const password1Error = document.getElementById('password1Error');
             const password2Error = document.getElementById('password2Error');
+            const emailError = document.getElementById('emailError');
 
             function validatePassword() {
                 const passwordValue = password1.value;
@@ -109,11 +117,29 @@
                 }
             }
 
+            function validateEmail() {
+                const emailValue = email.value;
+                const emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+                if (!emailPattern.test(emailValue)) {
+                    email.classList.add('invalid');
+                    email.classList.remove('valid');
+                    emailError.textContent = 'Email must be a valid Gmail address.';
+                    return false;
+                } else {
+                    email.classList.remove('invalid');
+                    email.classList.add('valid');
+                    emailError.textContent = '';
+                    return true;
+                }
+            }
+
             password1.addEventListener('input', validatePassword);
             password2.addEventListener('input', validatePasswordMatch);
+            email.addEventListener('input', validateEmail);
 
             form.addEventListener('submit', (e) => {
-                if (!validatePassword() || !validatePasswordMatch()) {
+                if (!validatePassword() || !validatePasswordMatch() || !validateEmail()) {
                     e.preventDefault();
                     alert('Please correct the errors in the form.');
                 }

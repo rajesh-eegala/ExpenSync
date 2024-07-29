@@ -34,6 +34,7 @@ nav ul {
     list-style: none;
     padding: 0;
     display: flex;
+    font-weight: bold;
     justify-content: center;
     gap: 20px;
     margin: 0;

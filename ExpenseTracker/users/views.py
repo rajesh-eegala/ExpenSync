@@ -52,19 +52,26 @@ def register(request):
 
 def login_(request):
     if request.method == 'POST':
-        
         username = request.POST['username']
         password = request.POST['password']
-        user=authenticate(request, username=username,password=password)
-        if user is not None:
-            login(request,user)
-            return redirect('manage_expenses')
-    
-        else:
-            messages.error(request, "Invalid credentials")
-            return redirect('register')
-
         
+        try:
+            user = User.objects.get(username=username)
+            # If user exists, try authenticating
+            user = authenticate(request, username=username, password=password)
+            
+            if user is not None:
+                login(request, user)
+                return redirect('home')
+            else:
+                messages.error(request, "Wrong password. Please try again.")
+                return render(request, 'login.html')
+        
+        except User.DoesNotExist:
+            # If user does not exist
+            messages.error(request, "You don't have an account, Sign Up Now!")
+            return redirect('register')
+    
     return render(request, 'login.html')
 
 

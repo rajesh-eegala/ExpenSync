@@ -4,23 +4,28 @@
     <meta charset="UTF-8">
     <title>Manage Expenses</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'test.css' %}">
+    <link rel="stylesheet" href="{% static 'add_expenses.css' %}">
 </head>
 <body>
-    <nav>
-        <ul>
-            
-            <li class="current"><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'register' %}">Registration</a></li>
-            <li><a href="{% url 'manage_expenses' %}">Manage Expenses</a></li>
-            {% if user.is_authenticated %}
-                <li><a href="{% url 'logout' %}">Logout</a></li>
-            {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
-            {% endif %}
-            <li><a href="{% url 'summary' %}">Summary</a></li>
-        </ul>
-    </nav>
+    <!-- Header and Navigation Bar -->
+    <header>
+        <div class="container1">
+            <nav>
+                <ul>
+                    <li class="current"><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'register' %}">Registration</a></li>
+                    <li><a href="{% url 'manage_expenses' %}">Manage Expenses</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'summary' %}">Summary</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+<br>
     <div class="container">
         <!-- Create a New Expense Section -->
         <section id="create-expense">
@@ -71,6 +76,7 @@
             </a>
         </div>
     </div>
+
     <!-- Footer Section -->
     <footer>
         <p>Expense Tracker &copy; 2024</p>

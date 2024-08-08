@@ -36,6 +36,10 @@ The application features a clean and intuitive user interface, making it easy fo
 
 ## Installation and Setup
 
+Prerequisites:
+    Python: Ensure you have Python installed (preferably 3.10 or higher).
+    MySQL: Ensure you have MySQL installed and running.
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/ExpenSync.git
@@ -43,8 +47,14 @@ The application features a clean and intuitive user interface, making it easy fo
 2. Navigate to the project directory
     ```bash
    cd ExpenSync
+
+
+3. Activate virtual environment:
+   ```bash
+   source Env/bin/activate
     
-3. Install dependencies:
+4. Install dependencies:
+   Every dependency and libraries needed for the project are already installed in the environment
    ```bash
    pip install -r requirements.txt
    

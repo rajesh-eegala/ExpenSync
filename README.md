@@ -54,7 +54,7 @@ Prerequisites:
    source Env/bin/activate
     
 4. Install dependencies:
-   Every dependency and libraries needed for the project are already installed in the environment
+   Every dependency and libraries needed for the project are already installed in the environment. But make sure everything in the requirements.txt file is installed.
    ```bash
    pip install -r requirements.txt
    

@@ -37,8 +37,8 @@ The application features a clean and intuitive user interface, making it easy fo
 ## Installation and Setup
 
 Prerequisites:
-    - Python: Ensure you have Python installed (preferably 3.10 or higher).
-    - MySQL: Ensure you have MySQL installed and running.
+   - Python: Ensure you have Python installed (preferably 3.10 or higher).
+   - MySQL: Ensure you have MySQL installed and running.
 
 1. Clone the repository:
    ```bash

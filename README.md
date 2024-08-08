@@ -44,21 +44,20 @@ Prerequisites:
    ```bash
    git clone https://github.com/yourusername/ExpenSync.git
 
-2. Navigate to the project directory
-    ```bash
-   cd ExpenSync
-
-
-3. Activate virtual environment:
+2. Activate virtual environment:
    ```bash
-   source Env/bin/activate
-    
-4. Install dependencies:
+   source Django/bin/activate
+   
+3. Install dependencies:
    Every dependency and libraries needed for the project are already installed in the environment. But make sure everything in the requirements.txt file is installed.
    ```bash
    pip install -r requirements.txt
+    
+4. Navigate to the project directory
+    ```bash
+   cd ExpenSync
    
-4. Set up the database:
+5. Set up the database:
    - Install MySQL and create a database for the project.
    - Configure the database settings in the Django settings.py file.
    - Run migrations:
@@ -66,15 +65,15 @@ Prerequisites:
    ```bash  
    python manage.py migrate
 
-5. Create a superuser to access the admin panel:
+6. Create a superuser to access the admin panel:
     ```bash
    python manage.py createsuperuser
 
-6. Start the server:
+7. Start the server:
      ```bash
    python manage.py runserver
 
-7. Access the application at http://127.0.0.1:8000/.
+8. Access the application at http://127.0.0.1:8000/.
 
 ## Contribution
 
